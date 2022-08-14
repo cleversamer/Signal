@@ -7,7 +7,9 @@ import { Button, Input, Image } from "@rneui/themed";
 const LoginScreen = ({ navigation }) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    alert("Login");
+  };
 
   return (
     <Screen style={styles.container}>
@@ -32,6 +34,7 @@ const LoginScreen = ({ navigation }) => {
             onChangeText={(password) =>
               setCredentials({ ...credentials, password })
             }
+            onSubmitEditing={handleSubmit}
             placeholder="Password"
             secureTextEntry
             value={credentials.password}
@@ -50,8 +53,6 @@ const LoginScreen = ({ navigation }) => {
           title="Register"
           type="outline"
         />
-
-        <View style={{ height: 100 }} />
       </KeyboardAvoidingView>
     </Screen>
   );
@@ -61,7 +62,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     backgroundColor: "#fff",
-    flex: 1,
     justifyContent: "center",
     padding: 10,
   },
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     borderRadius: 7,
-    height: 200,
-    width: 200,
+    height: 150,
+    width: 150,
   },
   button: {
     alignSelf: "center",
