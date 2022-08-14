@@ -1,18 +1,17 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import WelcomeScreen from "../screens/WelcomeScreen";
+import LoginScreen from "../screens/LoginScreen";
 
 const globalScreenOptions = {
-  headerShown: false,
-  contentStyle: {
-    backgroundColor: "#fff",
-  },
+  headerStyle: { backgroundColor: "#2c6bed" },
+  headerTitleStyle: { color: "#fff" },
+  headerTintColor: "#fff",
 };
 
 const Stack = createNativeStackNavigator();
 
 const RootNavigation = () => (
   <Stack.Navigator screenOptions={globalScreenOptions}>
-    <Stack.Screen name="Splash" component={WelcomeScreen} />
+    <Stack.Screen name="Login" component={LoginScreen} />
   </Stack.Navigator>
 );
 
