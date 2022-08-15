@@ -1,22 +1,27 @@
-import { useState, useLayoutEffect } from "react";
+import { useState } from "react";
 import { KeyboardAvoidingView, View } from "react-native";
 import { StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Button, Input, Text } from "@rneui/themed";
 import Screen from "../components/Screen";
 
+import auth from "../services/auth";
+
 const RegisterScreen = () => {
-  const [info, setInfo] = useState({
+  const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
     avatarUrl: "",
   });
 
-  const handleChange = (key) => (value) => setInfo({ ...info, [key]: value });
+  const handleChange = (key) => (value) => {
+    setUser({ ...user, [key]: value });
+  };
 
-  const handleRegister = () => {
-    alert("Register");
+  const handleRegister = async () => {
+    const res = await auth.register(user);
+    console.log(res);
   };
 
   return (
@@ -31,21 +36,21 @@ const RegisterScreen = () => {
             autoFocus
             onChangeText={handleChange("name")}
             placeholder="Full Name"
-            value={info.name}
+            value={user.name}
           />
 
           <Input
             keyboardType="email-address"
             onChangeText={handleChange("email")}
             placeholder="Email"
-            value={info.email}
+            value={user.email}
           />
 
           <Input
             onChangeText={handleChange("password")}
             placeholder="Password"
             secureTextEntry
-            value={info.password}
+            value={user.password}
           />
 
           <Input
@@ -54,7 +59,7 @@ const RegisterScreen = () => {
             onSubmitEditing={handleRegister}
             placeholder="Avatar URL (Optional)"
             textContentType="URL"
-            value={info.avatarUrl}
+            value={user.avatarUrl}
           />
         </View>
 
