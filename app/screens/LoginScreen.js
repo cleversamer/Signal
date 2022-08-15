@@ -1,32 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { StyleSheet, View, KeyboardAvoidingView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Screen from "../components/Screen";
 import { Button, Input, Image } from "@rneui/themed";
-
-import auth from "../services/auth";
-import firebase from "../../firebase";
+import useAuth from "../auth/useAuth";
 
 const LoginScreen = ({ navigation }) => {
+  const auth = useAuth();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
-  useEffect(() => {
-    const unsubscribe = firebase.auth.onAuthStateChanged((user) => {
-      if (!user) {
-        return;
-      }
-
-      console.log("listener", user);
-      navigation.replace("Home");
-    });
-
-    return unsubscribe;
-  }, []);
-
   const handleSubmit = async () => {
-    const res = await auth.login(credentials);
-    if (!res.ok) {
-      return console.log("err", res.err.message);
+    try {
+      await auth.login(credentials);
+    } catch (err) {
+      console.log(err);
     }
   };
 

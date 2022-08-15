@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { Button, Input, Text } from "@rneui/themed";
 import Screen from "../components/Screen";
 
-import auth from "../services/auth";
+import auth from "../auth";
 
 const RegisterScreen = () => {
   const [user, setUser] = useState({
@@ -20,8 +20,11 @@ const RegisterScreen = () => {
   };
 
   const handleRegister = async () => {
-    const res = await auth.register(user);
-    console.log(res);
+    try {
+      await auth.register(user);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

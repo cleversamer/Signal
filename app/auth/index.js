@@ -60,7 +60,7 @@ const login = async (credentials) => {
 
 const logout = async () => {
   try {
-    await signOut(firebase.auth);
+    return await signOut(firebase.auth);
   } catch (err) {
     return parseError(err);
   }
