@@ -15,17 +15,21 @@ const HeaderLeft = ({ photoURL }) => {
   );
 };
 
-const HeaderRight = () => (
-  <View style={styles.headerRight}>
-    <TouchableOpacity activeOpacity={0.5}>
-      <AntDesign name="camerao" size={24} color="#303030" />
-    </TouchableOpacity>
+const HeaderRight = ({ navigation }) => {
+  const onPencilPress = () => navigation.navigate("AddChat");
 
-    <TouchableOpacity activeOpacity={0.5}>
-      <SimpleLineIcons name="pencil" size={24} color="#303030" />
-    </TouchableOpacity>
-  </View>
-);
+  return (
+    <View style={styles.headerRight}>
+      <TouchableOpacity activeOpacity={0.5}>
+        <AntDesign name="camerao" size={24} color="#303030" />
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={onPencilPress} activeOpacity={0.5}>
+        <SimpleLineIcons name="pencil" size={24} color="#303030" />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const useHeader = (navigation, options) => {
   const { user } = useAuth();
@@ -35,7 +39,8 @@ const useHeader = (navigation, options) => {
       ...options,
       headerLeft: () =>
         options.headerLeft && <HeaderLeft photoURL={user.photoURL} />,
-      headerRight: () => options.headerRight && <HeaderRight />,
+      headerRight: () =>
+        options.headerRight && <HeaderRight navigation={navigation} />,
     });
   }, []);
 };

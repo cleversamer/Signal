@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Avatar, ListItem } from "@rneui/themed";
+import withTouchableOpacity from "../hoc/withTouchableOpacity";
 
 const CustomListItem = ({ id, chatName, enterChat }) => {
   return (
@@ -24,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomListItem;
+export default withTouchableOpacity(CustomListItem, { activeOpacity: 0.8 });
