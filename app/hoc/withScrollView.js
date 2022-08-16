@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 
 const withScrollView = (Content, style) => (props) => {
   return (

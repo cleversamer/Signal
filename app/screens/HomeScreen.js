@@ -1,30 +1,33 @@
-import { Button } from "react-native";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
 import Screen from "../components/Screen";
-import useAuth from "../auth/useAuth";
-import withStatusBarPadding from "../hoc/withStatusBarPadding";
+import withScrollView from "../hoc/withScrollView";
+import CustomListItem from "../components/CustomListItem";
+import useHeader from "../hooks/useHeader";
 
-const HomeScreen = (props) => {
-  const auth = useAuth();
+const headerOptions = {
+  headerLeft: true,
+  headerRight: true,
+  headerStyle: { backgroundColor: "#fff" },
+  headerTintColor: { color: "#303030" },
+  headerTitleStyle: { color: "#303030" },
+  title: "Signal",
+};
 
-  const handleLogout = async () => {
-    try {
-      await auth.logout();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+const HomeScreen = ({ navigation }) => {
+  useHeader(navigation, headerOptions);
 
   return (
     <Screen style={styles.container}>
-      <Text>This is the home screen</Text>
-      <Button title="Logout" onPress={handleLogout} />
+      <CustomListItem />
     </Screen>
   );
 };
 
 const styles = StyleSheet.create({
   container: {},
+  headerIcon: {
+    marginRight: 15,
+  },
 });
 
-export default withStatusBarPadding(HomeScreen);
+export default withScrollView(HomeScreen);
