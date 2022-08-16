@@ -3,11 +3,12 @@
     "name": "signal-clone",
     "slug": "signal-clone",
     "version": "1.0.0",
+    "platforms": ["ios", "android"],
     "orientation": "portrait",
     "icon": "./app/assets/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/splash.jpeg",
+      "image": "./app/assets/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
@@ -16,14 +17,15 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.cleversamer.signal",
+      "buildNumber": "1.0.0"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./app/assets/logo.png",
-        "backgroundColor": "#FFFFFF"
-      }
+      "package": "com.cleversamer.signal",
+      "versionCode": 1
     },
+    "description": "Signal clone app",
     "web": {
       "favicon": "./app/assets/logo.png"
     }
