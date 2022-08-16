@@ -22,8 +22,7 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     try {
-      const unsubscribe = chatService.subscribeToChats(setChats);
-      return unsubscribe;
+      return chatService.subscribeToChats(setChats);
     } catch (err) {
       console.log(err);
     }

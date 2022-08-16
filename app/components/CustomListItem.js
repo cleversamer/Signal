@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   title: {
     color: "#303030",
     fontWeight: "800",
-    textTransform: "capitalize",
   },
   subtitle: {
     color: "#808080",

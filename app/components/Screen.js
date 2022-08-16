@@ -1,8 +1,10 @@
 import { SafeAreaView, StyleSheet, View } from "react-native";
+import OfflineNotice from "./OfflineNotice";
 
 const Screen = ({ children, style }) => {
   return (
     <SafeAreaView style={[styles.screen, style]}>
+      <OfflineNotice />
       <View style={[styles.container, style]}>{children}</View>
     </SafeAreaView>
   );
