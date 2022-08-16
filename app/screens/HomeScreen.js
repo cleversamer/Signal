@@ -2,6 +2,7 @@ import { Button } from "react-native";
 import { StyleSheet, Text } from "react-native";
 import Screen from "../components/Screen";
 import useAuth from "../auth/useAuth";
+import withStatusBarPadding from "../hoc/withStatusBarPadding";
 
 const HomeScreen = (props) => {
   const auth = useAuth();
@@ -26,4 +27,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default HomeScreen;
+export default withStatusBarPadding(HomeScreen);

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { KeyboardAvoidingView, View } from "react-native";
+import { View } from "react-native";
 import { StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Button, Input, Text } from "@rneui/themed";
 import Screen from "../components/Screen";
-
+import withKeyboardAvoidingView from "../hoc/withKeyboardAvoidingView";
 import auth from "../auth";
 
 const RegisterScreen = () => {
@@ -29,50 +29,48 @@ const RegisterScreen = () => {
 
   return (
     <Screen style={styles.container}>
-      <KeyboardAvoidingView style={styles.container}>
-        <StatusBar style="light" />
+      <StatusBar style="light" />
 
-        <Text style={styles.heading}>Create a Signal account</Text>
+      <Text style={styles.heading}>Create a Signal account</Text>
 
-        <View style={styles.inputContainer}>
-          <Input
-            autoFocus
-            onChangeText={handleChange("name")}
-            placeholder="Full Name"
-            value={user.name}
-          />
-
-          <Input
-            keyboardType="email-address"
-            onChangeText={handleChange("email")}
-            placeholder="Email"
-            value={user.email}
-          />
-
-          <Input
-            onChangeText={handleChange("password")}
-            placeholder="Password"
-            secureTextEntry
-            value={user.password}
-          />
-
-          <Input
-            keyboardType="url"
-            onChangeText={handleChange("avatarUrl")}
-            onSubmitEditing={handleRegister}
-            placeholder="Avatar URL (Optional)"
-            textContentType="URL"
-            value={user.avatarUrl}
-          />
-        </View>
-
-        <Button
-          onPress={handleRegister}
-          raised
-          containerStyle={styles.button}
-          title="Register"
+      <View style={styles.inputContainer}>
+        <Input
+          autoFocus
+          onChangeText={handleChange("name")}
+          placeholder="Full Name"
+          value={user.name}
         />
-      </KeyboardAvoidingView>
+
+        <Input
+          keyboardType="email-address"
+          onChangeText={handleChange("email")}
+          placeholder="Email"
+          value={user.email}
+        />
+
+        <Input
+          onChangeText={handleChange("password")}
+          placeholder="Password"
+          secureTextEntry
+          value={user.password}
+        />
+
+        <Input
+          keyboardType="url"
+          onChangeText={handleChange("avatarUrl")}
+          onSubmitEditing={handleRegister}
+          placeholder="Avatar URL (Optional)"
+          textContentType="URL"
+          value={user.avatarUrl}
+        />
+      </View>
+
+      <Button
+        onPress={handleRegister}
+        raised
+        containerStyle={styles.button}
+        title="Register"
+      />
     </Screen>
   );
 };
@@ -82,7 +80,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     flex: 1,
-    justifyContent: "center",
     padding: 10,
   },
   inputContainer: {
@@ -100,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RegisterScreen;
+export default withKeyboardAvoidingView(RegisterScreen, styles.container);

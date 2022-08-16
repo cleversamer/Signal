@@ -1,10 +1,15 @@
-import { SafeAreaView, StyleSheet, View } from "react-native";
-import Constants from "expo-constants";
+import { ScrollView } from "react-native-gesture-handler";
+import {
+  SafeAreaView,
+  KeyboardAvoidingView,
+  StyleSheet,
+  View,
+} from "react-native";
 
 const Screen = ({ children, style }) => {
   return (
     <SafeAreaView style={[styles.screen, style]}>
-      <View style={[styles.view, style]}>{children}</View>
+      <View style={[styles.container, style]}>{children}</View>
     </SafeAreaView>
   );
 };
@@ -12,9 +17,8 @@ const Screen = ({ children, style }) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight,
   },
-  view: {
+  container: {
     flex: 1,
   },
 });

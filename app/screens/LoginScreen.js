@@ -18,7 +18,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <Screen style={styles.container}>
+    <Screen style={styles.container} keyboardFix>
       <KeyboardAvoidingView
         behavior="padding"
         style={{ flex: 1, alignItems: "center" }}
