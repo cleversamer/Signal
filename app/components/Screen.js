@@ -3,10 +3,13 @@ import OfflineNotice from "./OfflineNotice";
 
 const Screen = ({ children, style }) => {
   return (
-    <SafeAreaView style={[styles.screen, style]}>
+    <View style={{ flex: 1 }}>
       <OfflineNotice />
-      <View style={[styles.container, style]}>{children}</View>
-    </SafeAreaView>
+
+      <SafeAreaView style={[styles.screen, style]}>
+        <View style={[styles.container, style]}>{children}</View>
+      </SafeAreaView>
+    </View>
   );
 };
 

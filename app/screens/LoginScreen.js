@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     backgroundColor: "#fff",
-    justifyContent: "center",
     padding: 10,
   },
   inputContainer: {

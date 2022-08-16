@@ -11,12 +11,10 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = firebase.auth.onAuthStateChanged((user) => {
+    return firebase.auth.onAuthStateChanged((user) => {
       setUser(user);
       setLoading(false);
     });
-
-    return unsubscribe;
   }, []);
 
   if (loading) {

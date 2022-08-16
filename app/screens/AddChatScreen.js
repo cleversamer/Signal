@@ -1,27 +1,29 @@
 import { useState } from "react";
 import { StyleSheet } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { Input, Icon, Button } from "@rneui/themed";
 import Screen from "../components/Screen";
 import useHeader from "../hooks/useHeader";
 import chatService from "../services/chat";
+import useAuth from "./../auth/useAuth";
 
 const headerOptions = {
-  headerLeft: false,
-  headerRight: false,
+  headerBackVisible: false,
   headerStyle: { backgroundColor: "#2c6bed" },
   headerTintColor: { color: "#fff" },
+  headerTitle: true,
   headerTitleStyle: { color: "#fff" },
   title: "Add a new chat",
 };
 
 const AddChatScreen = ({ navigation }) => {
+  const { user } = useAuth();
+  useHeader(navigation, { ...headerOptions, avatarUrl: user.photoURL });
   const [input, setInput] = useState("");
-  useHeader(navigation, headerOptions);
 
   const handleCreateChat = async () => {
     try {
-      if (!input) return;
-      await chatService.createChat(input);
+      await chatService.createChat({ chatName: input, user });
       navigation.goBack();
     } catch (err) {
       console.log(err);
@@ -40,6 +42,8 @@ const AddChatScreen = ({ navigation }) => {
 
   return (
     <Screen style={styles.container}>
+      <StatusBar style="light" />
+
       <Input
         autoFocus
         leftIcon={renderLeftIcon()}
@@ -49,7 +53,11 @@ const AddChatScreen = ({ navigation }) => {
         value={input}
       />
 
-      <Button title="Create new chat" onPress={handleCreateChat} />
+      <Button
+        disabled={!input}
+        onPress={handleCreateChat}
+        title="Create new chat"
+      />
     </Screen>
   );
 };
