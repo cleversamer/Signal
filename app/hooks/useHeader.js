@@ -4,6 +4,16 @@ import { Avatar } from "@rneui/themed";
 import { AntDesign, SimpleLineIcons } from "@expo/vector-icons";
 import useAuth from "../auth/useAuth";
 
+const HeaderBackIcon = ({ navigation, headerTintColor }) => (
+  <AntDesign
+    color={headerTintColor.color}
+    name="arrowleft"
+    onPress={() => navigation.goBack()}
+    size={24}
+    style={styles.headerBack}
+  />
+);
+
 const HeaderLeft = ({ photoURL }) => {
   const renderIcon = () =>
     photoURL ? { uri: photoURL } : require("../assets/user.png");
@@ -31,16 +41,24 @@ const HeaderRight = ({ navigation }) => {
   );
 };
 
-const useHeader = (navigation, options) => {
+const useHeader = (navigation, options = {}) => {
   const { user } = useAuth();
+
+  const renderHeaderLeft = () => () =>
+    options.headerLeft ? (
+      <HeaderLeft photoURL={user.photoURL} />
+    ) : (
+      <HeaderBackIcon {...options} navigation={navigation} />
+    );
+
+  const renderHeaderRight = () => () =>
+    options.headerRight && <HeaderRight navigation={navigation} />;
 
   useLayoutEffect(() => {
     navigation.setOptions({
       ...options,
-      headerLeft: () =>
-        options.headerLeft && <HeaderLeft photoURL={user.photoURL} />,
-      headerRight: () =>
-        options.headerRight && <HeaderRight navigation={navigation} />,
+      headerLeft: renderHeaderLeft(),
+      headerRight: renderHeaderRight(),
     });
   }, []);
 };
@@ -54,6 +72,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginRight: 20,
     width: 80,
+  },
+  headerBack: {
+    marginRight: 15,
   },
 });
 

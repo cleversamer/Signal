@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const config = {
@@ -11,10 +11,12 @@ const config = {
   appId: process.env["REACT_APP_FIREBASE_APP_ID"],
 };
 
-const app = initializeApp(config);
+initializeApp(config);
 
 const db = getFirestore();
 
 const auth = getAuth();
+
+export const chatsRef = collection(db, "chats");
 
 export default { db, auth };
