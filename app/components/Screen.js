@@ -1,10 +1,4 @@
-import { ScrollView } from "react-native-gesture-handler";
-import {
-  SafeAreaView,
-  KeyboardAvoidingView,
-  StyleSheet,
-  View,
-} from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 
 const Screen = ({ children, style }) => {
   return (

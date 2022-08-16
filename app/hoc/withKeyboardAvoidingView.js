@@ -1,8 +1,12 @@
-import { StyleSheet, KeyboardAvoidingView } from "react-native";
+import { StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 
 const withKeyboardAvoidingView = (Content, style) => (props) => {
   return (
-    <KeyboardAvoidingView behavior="padding" style={[styles.container, style]}>
+    <KeyboardAvoidingView
+      behavior="padding"
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
+      style={[styles.container, style]}
+    >
       <Content {...props} />
     </KeyboardAvoidingView>
   );
