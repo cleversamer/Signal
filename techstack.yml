@@ -2,7 +2,7 @@ repo_name: cleversamerr/Signal
 report_id: 9aa54949eea58ed9e2e59b81ef5ddb27
 version: 0.1
 repo_type: Public
-timestamp: '2023-12-24T12:43:15+00:00'
+timestamp: '2024-01-05T08:16:15+00:00'
 requested_by: cleversamerr
 provider: github
 branch: main
@@ -17,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/cleversamerr/Signal
   detection_source: Repo Metadata
 - name: Expo
   description: Build one project that runs natively on all your users' devices
@@ -26,6 +27,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Cross-Platform Mobile Development
   image_url: https://img.stackshare.io/service/5795/default_683a3de22a6983c41f27b04348f4c7380c5e3c21.jpg
+  detection_source_url: https://github.com/cleversamerr/Signal/blob/main/package.json
   detection_source: package.json
   last_updated_by: Samer A
   last_updated_on: 2022-08-14 11:00:59.000000000 Z
@@ -65,6 +67,7 @@ tools:
   category: Application Hosting
   sub_category: Realtime Backend / API
   image_url: https://img.stackshare.io/service/116/cZLxNFZS.jpg
+  detection_source_url: https://github.com/cleversamerr/Signal/blob/main/package.json
   detection_source: package.json
   last_updated_by: Samer A
   last_updated_on: 2022-08-15 07:26:31.000000000 Z
@@ -90,6 +93,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/cleversamerr/Signal
   detection_source: Repo Metadata
 - name: npm
   description: The package manager for JavaScript.
@@ -99,6 +103,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Front End Package Manager
   image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/cleversamerr/Signal/blob/main/package.json
   detection_source: package.json
   last_updated_by: Samer A
   last_updated_on: 2022-08-14 11:00:59.000000000 Z
